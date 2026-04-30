@@ -469,7 +469,7 @@ st.title("Baseline Literacy Assessment Dashboard")
 try:
     raw_df = load_data()
     feedback_responses_df = prep_data(raw_df)
-    st.success("✅ Data loaded.")
+    st.success("Data Connection Successful.")
 
 except Exception as e:
     st.error("❌ Failed to load data from Supabase.")
