@@ -16,9 +16,6 @@ REQUEST_DELAY = 0.08
 
 INCLUDE_COURSE_IDS = [16]
 
-OUTPUT_FILE = "data/baseline_literacy_responses.csv"
-BACKUP_FILE = "data/baseline_literacy_responses_backup.csv"
-TEMP_FILE = "data/temp_baseline_literacy_responses.csv"
 
 
 def call_moodle(wsfunction, **kwargs):
@@ -388,7 +385,6 @@ def save_to_supabase(df):
 
 
 if __name__ == "__main__":
-    os.makedirs("data", exist_ok=True)
 
     try:
         df = build_dataset()
@@ -399,8 +395,6 @@ if __name__ == "__main__":
         # Save to Supabase database
         save_to_supabase(df)
 
-        # Optional: still save local CSV backup
-        df.to_csv(OUTPUT_FILE, index=False, encoding="utf-8", na_rep="")
 
         print("✅ Baseline literacy raw LMS responses updated successfully", flush=True)
         print(f"Rows saved: {len(df)}", flush=True)
